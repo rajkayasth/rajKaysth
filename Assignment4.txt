@@ -1,0 +1,753 @@
+
+
+=============================================================================================================================================
+
+						NAME 	:-  RAJ KAYASTH
+						ROLL NO :-  B17
+						sUBJECT :-  PRATICAL BASED ON DATA SCIENCE 1 
+									ASSIGNMENT 4
+
+============================================================================================================================================
+
+
+
+
+
+
+==============================================================================================================================================
+												Div A Batch 1     Set 1   Netflix Dataset
+==============================================================================================================================================
+#question 1
+netflix_titles <- read.csv("netflix_titles.csv", sep = "," ,header = TRUE)
+View(netflix_titles)
+
+#Question 2
+
+colnames(netflix_titles)<-c('show_id','type','title','director','cast','country','date_added','release_year','rating','duration','listed_in','description')
+
+
+#Question 3 Part 1
+
+netflix_titles[netflix_titles$director == "",]$director=NA
+View(netflix_titles)
+
+
+OutPut :- Summary Of OutPut 
+
+Jay Karas                                      S.S. Rajamouli                                         Detlev Buck 
+                                                  7                                                   7                                                   4 
+                                      Conrad Helten                                           Jay Roach                                         Michael Bay 
+                                                  3                                                   3                                                   3 
+                                    Nagesh Kukunoor                                        Priyadarshan                                   Rajkumar Santoshi 
+                                                  3                                                   3                                                   3 
+                                       Remo D'Souza                                   Toshiyuki Kubooka                                     Youssef Chahine 
+                                                  3                                                   3                                                   3 
+                                      Adam Shankman                                           Adze Ugah                                        Alex Lehmann 
+                                                  2                                                   2                                                   2 
+                                        Amy Schumer                                         Atanu Ghosh                                        Ava DuVernay 
+                                                  2                                                   2                                                   2 
+                                          BB Sasore                      Bo Burnham, Christopher Storer                              Bonni Cohen, Jon Shenk 
+                                                  2                                                   2                                                   2 
+                                        Brett Haley                                 Cathy Garcia-Molina                                         Chris Bould 
+                                                  2                                                   2                                                   2 
+                                     Cristina Jacob                                     Damien O’Connor                                        Dan Villegas 
+                                                  2                                                   2                                                   2 
+                                     Ezekiel Norton                               Gonzalo López-Gallego                                            Joe Camp 
+                                                  2                                                   2                                                   2 
+                                   John Fortenberry                                        John Schultz                              Jon Lucas, Scott Moore 
+                                                  2                                                   2                                                   2 
+                                    Jonathan Levine                                      Justin G. Dyck                                  Khaled El Halafawy 
+                                                  2                                                   2                                                   2 
+                                       Khaled Marei                                         Kyran Kelly                                        Larry Latham 
+                                                  2                                                   2                                                   2 
+                                   Mahesh Manjrekar                                      Nadia Hallgren                                       Neeraj Pandey 
+                                                  2                                                   2                                                   2 
+                                       Noriyuki Abe                                        Ozan Açıktan                                         Peter Segal 
+                                                  2                                                   2                                                   2 
+                                     Phil Weinstein                                         Prakash Jha                                       Rako Prijanto 
+                                                  2                                                   2                                                   2 
+                                    Ram Gopal Varma                              Raúl Campos, Jan Suter                                        Richard Rich 
+                                                  2                                                   2                                                   2 
+                                     Salvador Calvo                                Savage Steve Holland                             Stanley Moore, Alex Woo 
+                                                  2                                                   2                                                   2 
+                      Steven Bognar, Julia Reichert                                  Trivikram Srinivas                                        V Vignarajan 
+                                                  2                                                   2                                                   2 
+                               Vikramaditya Motwane                                          Wael Ehsan                                         A. L. Vijay 
+                                                  2                                                   2                                                   1 
+                                       A. Raajdheep                                        Aaron Lieber                                 Aaron Nee, Adam Nee 
+                                                  1                                                   1                                                   1 
+                                      Aaron Woodley Abbas Alibhai Burmawalla, Mastan Alibhai Burmawalla                                 Abdellatif Kechiche 
+                                                  1                                                   1                                                   1 
+                                 Abhijeet Deshpande                                     Abhishek Varman                                    Adam Bhala Lough 
+                                                  1                                                   1                                                   1 
+ Adam Davis, Jerry Kolber, Trey Nelson, Erich Sturm                                          Adam Deyoe                                          Adam Dubin 
+                                                  1                                                   1                                                   1 
+                                     Adam MacDonald                                         Adam Marino                                           Adam Wood 
+                                                  1                                                   1                                                   1 
+                               Adisorn Tresirikasem                                          Adrian Teh                                    Adriana Trigiani 
+                                                  1                                                   1                                                   1 
+                      Agasyah Karim, Khalid Kashogi                                      Ahmad El-Badri                                      Ahmet Katıksız 
+                                                  1                                                   1                                                   1 
+                                          Ajay Bahl                                    Alain Desrochers                                        Alan Rickman 
+                                                  1                                                   1                                                   1 
+                              Alejandro G. Iñárritu                    Aleksandr Chernyaev, Fedor Lyass                                           Alex Díaz 
+                                                  1                                                   1                                                   1 
+                                    Alex Ranarivelo                            Alex Timbers, Sam Wrench                             Alex Woo, Stanley Moore 
+                                                  1                                                   1                                                   1 
+                                          Alex Zamm                                    Alexander Nevsky                                      Alexandra Dean 
+                                                  1                                                   1                                                   1 
+                           Alfonso Serrano Maturino                                      Alison Klayman                                          Alo Sarkar 
+                                                  1                                                   1                                                   1 
+                                    Álvaro Brechner                                           Amy Segal                                             (Other) 
+                                                  1                                                   1                                                 601 
+                                               NA's 
+                                                274
+
+
+
+#Question 3 Part 2
+print(summary(netflix_titles$rating))
+raj <- (subset(summary(netflix_titles$rating),summary(netflix_titles$rating)==max(summary(netflix_titles$rating))))
+print(raj)
+nets <-names(raj)
+print(nets)
+netflix_titles[netflix_titles$rating == "",]$rating=nets
+View(netflix_titles)
+
+OutPut :--  
+
+		 G NC-17    NR    PG PG-13     R TV-14  TV-G TV-MA TV-PG  TV-Y TV-Y7 
+    1    10     1    13    29    54    94   275    28   381   105    36    26 	
+
+	
+	     G NC-17    NR    PG PG-13     R TV-14  TV-G TV-MA TV-PG  TV-Y TV-Y7 
+    0    10     1    13    29    54    94   275    28   382   105    36    26 
+
+
+#Question 4 1
+
+netf = netflix_titles[netflix_titles$release_year==2018 & netflix_titles$listed_in=="Comedies, Dramas",]
+View(netf)
+
+OutPut :-
+[1] show_id      type         title        director     cast         country      date_added   release_year rating       duration     listed_in    description 
+<0 rows> (or 0-length row.names)
+
+
+#Question 4 2
+movie_c <- sum(netflix_titles$type=="Movie")
+print("Total Movies:")
+print(movie_c)
+
+
+
+tvshow_c <-sum(netflix_titles$type=="TV Show")
+print("Total Shows:")
+print(tvshow_c)
+
+OutPut :-> movie_c <- sum(netflix_titles$type=="Movie")
+> print("Total Movies:")
+[1] "Total Movies:"
+> print(movie_c)
+[1] 780
+> tvshow_c <-sum(netflix_titles$type=="TV Show")
+> print("Total Shows:")
+[1] "Total Shows:"
+> print(tvshow_c)
+[1] 273
+
+#Question 4 3 
+netr= netflix_titles[netflix_titles$rating == "TV-14" & netflix_titles$release_year == 2020,]
+View(netr)
+
+Output :-
+
+		summary(netr)
+    show_id        type                                              title                  director 
+ s1007  : 1   Movie  :16   #cats_the_mewvie                             : 1   Trivikram Srinivas: 2  
+ s158   : 1   TV Show:10   100 Humans                                   : 1   V Vignarajan      : 2  
+ s195   : 1                100% Halal                                   : 1   A. Raajdheep      : 1  
+ s214   : 1                A Choo                                       : 1   Carla Barros      : 1  
+ s219   : 1                A Life of Speed: The Juan Manuel Fangio Story: 1   Caroline Suh      : 1  
+ s224   : 1                A Perfect Crime                              : 1   (Other)           :10  
+ (Other):20                (Other)                                      :20   NA's              : 9  
+                                                                                                                                                                                        cast   
+                                                                                                                                                                                          : 6  
+ Allu Arjun, Pooja Hegde, Tabu, Sushanth, Nivetha Pethuraj, Jayaram, Murli Sharma                                                                                                         : 2  
+ Vinoth Kishan, Arjun Das, Pooja Ramachandran, Kumar Natarajan, Misha Ghoshal, Arul Vincent, Chenthu Mohan, Pradeep Kalipurayath                                                          : 2  
+ Anders Baasmo, Kathrine Thorborg Johansen, Ida Husøy, Otto Jespersen, Sven Nordin, Trond Halbo, Alexandra Maria Lara, Wenche Myhre, Kostja Ullmann, Björn Kjellman                       : 1  
+ Anisa Rahma, Ariyo Wahab, Anandito Dwis, Fitria Rasyidi, Arafah Rianti, Kinaryosih                                                                                                       : 1  
+ Antonio Sanint, Luis Eduardo Arango, María Cecilia Sánchez, Mariana Gómez, Julián Cerati, Aura Cristina Geithener, Biassini Segura, Lina Tejeiro, Julio César Herrera, Christian Villamil: 1  
+ (Other)                                                                                                                                                                                  :13  
+          country              date_added  release_year      rating        duration                                              listed_in 
+ United States:6   November 24, 2020: 2   Min.   :2020   TV-14  :26   1 Season :7   Anime Series, International TV Shows              : 3  
+ India        :5   October 14, 2020 : 2   1st Qu.:2020          : 0   101 min  :3   Action & Adventure, Comedies, Dramas              : 2  
+ Japan        :3   April 25, 2020   : 1   Median :2020   G      : 0   162 min  :2   Action & Adventure, Comedies, International Movies: 2  
+              :2   April 29, 2020   : 1   Mean   :2020   NC-17  : 0   171 min  :2   Documentaries, International Movies, Sports Movies: 2  
+ Argentina    :1   August 27, 2020  : 1   3rd Qu.:2020   NR     : 0   2 Seasons:2   Docuseries, Science & Nature TV                   : 2  
+ Brazil       :1   August 5, 2020   : 1   Max.   :2020   PG     : 0   83 min   :2   Dramas, International Movies                      : 2  
+ (Other)      :8   (Other)          :18                  (Other): 0   (Other)  :8   (Other)                                           :13  
+                                                                                                                                                   description
+ After growing up enduring criticism from his father, a young man finds his world shaken upon learning he was switched at birth with a millionaire’s son.: 2  
+ As a blind librarian, dispirited cricketer and desolate psychiatrist each seek retribution and release, their lives overlap under eerie influences.     : 2  
+ After high school, a young woman marries the man of her father's choice but soon faces the possibility that her religion considers the union invalid.   : 1  
+ Amid shifting times, two women kept their decades-long love a secret. But coming out later in life comes with its own set of challenges.                : 1  
+ An accountant and aspiring magician invites his boss to spend Christmas with his family — unaware that he's one of Colombia's most-wanted criminals.    : 1  
+ Commander Emma Green leaves behind her husband and daughter to lead an international crew of astronauts on a perilous three-year mission to Mars.       : 1  
+ (Other)                                                                                                                                                 :18  
+
+#question 4 4
+View(summary(netflix_titles$country))
+rajs <- (subset(summary(netflix_titles$country),summary(netflix_titles$country)==max(summary(netflix_titles$country))))
+print(rajs)
+netr = names(rajs)
+print(netr)
+
+OutPut :-
+
+> View(summary(netflix_titles$country))
+> rajs <- (subset(summary(netflix_titles$country),summary(netflix_titles$country)==max(summary(netflix_titles$country))))
+> print(rajs)
+United States 
+          340 
+> netr = names(rajs)
+> print(netr)
+[1] "United States"
+
+==============================================================================================================================================
+												Div A batch 1 Set 2  IPL Matches Dataset
+==============================================================================================================================================
+#Question 1
+ipl_matches=read.csv(file.choose(),sep=",",header = TRUE)
+View(ipl_matches)
+
+#Question 2
+colnames(ipl_matches) <- c('id','city','date','player_of_match','venue','neutral_venue','team1','team2','toss_winner','toss_decision','winner','result','result_margin','eliminator','method','umpire1','umpire2')
+
+
+#Question 3 1
+ipl_matches[ipl_matches$result_margin == -1,]$result_margin=NA
+View(ipl_matches)
+
+OutPut :-
+
+		 runs     tie wickets    NA's 
+   		 363      13     435       4 
+
+#Question 3 2
+ipl_matches[ipl_matches$eliminator == -1,]$eliminator=NA
+View(ipl_matches)
+
+Output :-
+	
+	 	-1   N   Y 
+  	 	 4 798  13 
+
+
+  	   -1    N    Y NA's 
+  		0  798   13    4 
+
+#Question 4 1
+View(table(ipl_matches$player_of_match))
+
+Output :-
+
+90	JP Duminy	4
+91	JP Faulkner	5
+92	K Rabada	1
+93	KA Pollard	11
+94	KC Sangakkara	5
+95	KD Karthik	5
+96	KH Pandya	4
+97	KK Ahmed	1
+98	KK Cooper	1
+99	KK Nair	3
+100	KL Rahul	7
+101	KM Jadhav	2
+102	KMA Paul	1
+103	KMDN Kulasekara	1
+104	KP Pietersen	3
+105	KS Williamson	4
+106	Kuldeep Yadav	1
+107	KV Sharma	1
+108	L Balaji	3
+109	L Ngidi	1
+110	LH Ferguson	2
+111	LJ Wright	1
+112	LMP Simmons	3
+113	LR Shukla	1
+114	LRPL Taylor	3
+115	M Kartik	1
+116	M Morkel	2
+117	M Muralitharan	2
+118	M Ntini	2
+119	M Vijay	6
+120	M Vohra	3
+121	MA Agarwal	2
+122	MA Starc	1
+123	Mandeep Singh	3
+124	MC Henriques	2
+125	MD Mishra	1
+126	MEK Hussey	12
+127	MF Maharoof	1
+128	MG Johnson	2
+129	MJ Lumb	1
+130	MJ McClenaghan	2
+131	MK Pandey	5
+132	MK Tiwary	3
+133	ML Hayden	4
+134	MM Patel	2
+135	MM Sharma	2
+136	MN Samuels	1
+137	Mohammed Shami	1
+138	Mohammed Siraj	2
+139	MP Stoinis	4
+140	MR Marsh	1
+141	MS Bisla	1
+142	MS Dhoni	17
+143	MS Gony	1
+144	Mujeeb Ur Rahman	1
+145	Mustafizur Rahman	1
+146	MV Boucher	2
+147	N Rana	4
+148	NM Coulter-Nile	4
+149	NV Ojha	1
+150	P Kumar	2
+151	P Negi	2
+152	P Parameswaran	1
+153	PA Patel	5
+154	PC Valthaty	2
+155	PD Collingwood	1
+156	PJ Cummins	1
+157	PK Garg	1
+158	PP Chawla	3
+159	PP Ojha	1
+160	PP Shaw	2
+161	PV Tambe	2
+162	Q de Kock	3
+163	R Ashwin	3
+164	R Bhatia	1
+165	R Dravid	2
+166	R McLaren	1
+167	R Sharma	2
+168	R Tewatia	1
+169	R Vinay Kumar	3
+170	RA Jadeja	9
+171	RA Tripathi	2
+172	Rashid Khan	8
+173	RD Gaikwad	3
+174	RE Levi	1
+175	RG Sharma	18
+176	RJ Harris	1
+177	RP Singh	1
+178	RR Pant	6
+179	RS Bopara	1
+180	RV Uthappa	7
+181	S Anirudha	1
+182	S Aravind	1
+183	S Badrinath	1
+184	S Dhawan	8
+185	S Gopal	2
+186	S Nadeem	2
+187	S Sohal	1
+188	S Sreesanth	1
+189	SA Asnodkar	1
+190	SA Yadav	5
+191	Sandeep Sharma	6
+192	SB Jakati	1
+193	SB Wagh	1
+194	SC Ganguly	5
+195	SE Marsh	9
+196	Shakib Al Hasan	2
+197	Shivam Mavi	1
+198	Shoaib Akhtar	1
+199	Shubman Gill	2
+200	SK Raina	14
+201	SK Trivedi	2
+202	SK Warne	4
+203	SL Malinga	6
+204	SM Curran	1
+205	SM Katich	1
+206	SM Pollock	2
+207	SO Hetmyer	1
+208	Sohail Tanvir	2
+209	SP Goswami	1
+210	SP Narine	9
+211	SPD Smith	5
+212	SR Tendulkar	8
+213	SR Watson	16
+214	SS Iyer	5
+215	ST Jayasuriya	2
+216	SV Samson	7
+217	SW Billings	1
+218	TA Boult	4
+219	TG Southee	1
+220	TL Suman	1
+221	TM Dilshan	1
+222	Umar Gul	1
+223	UT Yadav	8
+224	V Kohli	13
+225	V Sehwag	11
+226	VR Aaron	2
+227	Washington Sundar	1
+228	WP Saha	4
+229	WPUJC Vaas	1
+230	YK Pathan	16
+231	YS Chahal	3
+232	Yuvraj Singh	5
+233	Z Khan	1
+
+
+
+#Question 4 2
+tie <- ipl_matches[ipl_matches$result == "tie" & ipl_matches$neutral_venue == 1,]
+View(tie)
+
+
+Output :-
+
+	
+id
+city
+date
+player_of_match
+venue
+neutral_venue
+team1
+team2
+toss_winner
+toss_decision
+winner
+result
+result_margin
+eliminator
+method
+umpire1
+umpire2
+66	392190	Cape Town	2009-04-23	YK Pathan	Newlands	1	Kolkata Knight Riders	Rajasthan Royals	Kolkata Knight Riders	field	Rajasthan Royals	tie	NA	Y	NA	MR Benson	M Erasmus
+416	729315	Abu Dhabi	2014-04-29	JP Faulkner	Sheikh Zayed Stadium	1	Kolkata Knight Riders	Rajasthan Royals	Rajasthan Royals	bat	Rajasthan Royals	tie	NA	Y	NA	Aleem Dar	AK Chaudhary
+
+
+
+
+
+#Question 4 3
+print(summary(ipl_matches$toss_winner))
+tosswinner <- (subset(summary(ipl_matches$toss_winner),summary(ipl_matches$toss_winner)==max(summary(ipl_matches$toss_winner))))
+print(tosswinner)
+tosswin <- names(tosswinner)
+print(tosswin)
+
+
+Output :-
+
+Chennai Super Kings     Deccan Chargers              Delhi Capitals            Delhi Daredevils               Gujarat Lions 
+97                          43                          20                          80                          15 
+Kings XI Punjab        Kochi Tuskers Kerala       Kolkata Knight Riders              Mumbai Indians               Pune Warriors              85                           8                          98                         106                          20 
+Rajasthan Royals      Rising Pune Supergiant     Rising Pune Supergiants Royal Challengers Bangalore         Sunrisers Hyderabad 
+87                           6                           7                          86                          57 
+
+> print(tosswinner)
+Mumbai Indians 
+           106 
+> tosswin <- names(tosswinner)
+> print(tosswin)
+[1] "Mumbai Indians"
+
+
+
+#question 4 4
+#win <- ipl_matches[ipl_matches$toss_decision == "bat" & sipl_matches$toss_winner == ipl_matches$toss_winner & ipl_matches$winner == ipl_matches$winner, ]
+#View(win)
+
+dim(subset(ipl_matches, toss_decision=='bat' & toss_winner==winner))[1]
+
+Output:-
+
+> dim(subset(ipl_matches, toss_decision=='bat' & toss_winner==winner))[1]
+[1] 145
+
+==============================================================================================================================================
+												Div A Batch 2 Set 1 IPL Ball Ball Dataset
+==============================================================================================================================================
+#Question 1
+ipl_Data =read.csv("IPL Ball-by-Ball 2008-2020.csv",sep= ",",header = TRUE)
+View(ipl_Data)
+
+#Questoin 2
+colnames(ipl_Data) <-c('id','inning','over','ball','batsman','non_striker','bowler','batsman_runs','extra_runs','total_runs','non_boundary','is_wicket','dismissal_kind','player_dismissed','fielder','extras_type','batting_team','bowling_team')
+
+#Question 3 1
+print(summary(ipl_Data$dismissal_kind))
+#dmax=subset(summary(ipl_Data$dismissal_kind),summary(ipl_Data$dismissal_kind)==max(summary(!is.na(ipl_Data$dismissal_kind)),na.rm =FALSE))
+#print(dmax)
+h=ipl_Data[!is.na(ipl_Data$dismissal_kind),"dismissal_kind"][1]
+class(h)
+dmaxr=ipl_Data[!is.na(ipl_Data$dismissal_kind),"dismissal_kind"]
+View(dmaxr)
+dmaxr=subset(summary(dmaxr),summary(dmaxr)==max(summary(dmaxr)))
+print(dmaxr)
+ipl_Data[is.na(ipl_Data$dismissal_kind),"dismissal_kind"]=names(dmaxr)
+View(ipl_Data)
+print(summary(ipl_Data$dismissal_kind))
+
+
+
+OutPut :- 
+
+ bowled  caught  caught and bowled   hit wicket  lbw  retired hurt  run out  stumped  NA's 
+   84 		252       14            2            23     1             56       7      8141 
+
+
+ bowled  caught  caught and bowled   hit wicket  lbw  retired hurt  run out   stumped 
+ 84       8393     14                 2  		 23        1         56         7 
+
+
+
+
+
+#Question 3 2
+ipl_Data[ipl_Data$extra_runs == -1,]$extra_runs=0
+View(ipl_Data)
+
+OutPut :-
+
+ [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+  [80] 0 1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 5 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0
+ [159] 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 4 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ [238] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0
+ [317] 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 2 0 0 0 0
+ [396] 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 1 0 1 0 0
+ [475] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ [554] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0
+ [633] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0
+ [712] 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ [791] 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0
+ [870] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 1 0 0 0
+ [949] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0
+ [ reached getOption("max.print") -- omitted 7580 entries ]
+
+
+
+#Question 4 1
+table(subset(ipl_Data , batsman_runs == 6)$batsman)
+
+OutPut :-
+
+A Chopra         A Kumble         A Mishra          A Nehra        A Symonds        AA Noffke       AB Agarkar   AB de Villiers         AB Dinda 
+               0                0                0                0                9                0                2                1                0 
+    AC Gilchrist   AD Mascarenhas         AM Nayar        AM Rahane         AS Yadav          B Akhil         B Chipli            B Lee      BB McCullum 
+              18                1                5                0                2                3                0                1               15 
+        BJ Hodge    CK Kapugedera         CL White  D Kalyankrishna       D Salunkhe           DB Das     DB Ravi Teja         DJ Bravo        DJ Hussey 
+               0                0                4                0                0                1                0                3               17 
+     DJ Thornely        DNT Zoysa DPMD Jayawardene      DS Kulkarni       DS Lehmann         DT Patil         DW Steyn        G Gambhir         GC Smith 
+               2                0                4                0                0                0                0                4                2 
+      GD McGrath  Harbhajan Singh         HH Gibbs         I Sharma        IK Pathan    Iqbal Abdulla      J Arunkumar        JA Morkel         JDP Oram 
+               0                3                3                0                5                0                0                8                1 
+       JH Kallis  Joginder Sharma         JR Hopes           K Goel     Kamran Akmal    KC Sangakkara       KD Karthik         L Ronchi    LA Pomersbach 
+               3                1                7                4                2                4                1                1                2 
+       LPC Silva        LR Shukla      LRPL Taylor           M Kaif         M Kartik   M Muralitharan          M Ntini          M Rawat         MA Khote 
+               0                4               10                4                0                0                0                0                1 
+      MEK Hussey      MF Maharoof    Misbah-ul-Haq        MK Pandey        MK Tiwary        ML Hayden         MM Patel    Mohammad Asif  Mohammad Hafeez 
+              11                4                2                0                0                6                0                0                2 
+        MS Dhoni          MS Gony       MV Boucher      Niraj Patel          P Kumar         PA Patel     Pankaj Singh       PJ Sangwan        PP Chawla 
+              12                3                6                0                5                1                0                0                2 
+         PP Ojha          PR Shah         R Bhatia         R Dravid    R Vinay Kumar        RA Jadeja        RG Sharma         RP Singh          RR Raje 
+               0                0                2                3                1                4               10                0                0 
+       RR Sarwan       RT Ponting       RV Uthappa       S Anirudha      S Badrinath    S Chanderpaul         S Dhawan          S Sohal      S Sreesanth 
+               1                1                7                0                8                0                5                0                0 
+        S Vidyut      SA Asnodkar      Salman Butt        SB Bangar         SB Joshi        SB Styris       SC Ganguly         SE Marsh    Shahid Afridi 
+               2                2                0                1                0                2                8                9                4 
+    Shoaib Malik         SK Raina       SK Trivedi         SK Warne        SM Katich       SM Pollock    Sohail Tanvir       SP Fleming       SP Goswami 
+               0                8                0                2                2                8                0                0                0 
+    SR Tendulkar        SR Watson        SS Tiwary    ST Jayasuriya          T Kohli          T Taibu       TM Dilshan    TM Srivastava           U Kaul 
+               2               14                1               17                1                0                1                0                0 
+        Umar Gul          V Kohli         V Sehwag        VRV Singh       VVS Laxman        VY Mahesh         W Jaffer          WA Mota          WP Saha 
+               1                2               14                0                1                0                3                0                6 
+      WPUJC Vaas  Y Venugopal Rao        YK Pathan     Yuvraj Singh      YV Takawale           Z Khan 
+               1                9               11                9                1                0 
+
+
+
+
+
+#question 4 2
+table(subset(ipl_Data, dismissal_kind == "bowled")$bowler)
+
+OutPut :- 
+
+
+A Kumble        A Mishra         A Nehra       A Symonds       AA Noffke      AB Agarkar        AB Dinda  AD Mascarenhas        AM Nayar         B Akhil 
+              0               1               2               0               0               0               3               0               0               0 
+       B Geeves           B Lee   CK Kapugedera        CL White    CRD Fernando D Kalyankrishna      D Salunkhe    DB Ravi Teja        DJ Bravo       DJ Hussey 
+              0               0               0               0               0               0               0               0               2               0 
+    DJ Thornely      DL Vettori       DNT Zoysa   DP Vijaykumar        DR Smith     DS Kulkarni        DW Steyn Gagandeep Singh      GD McGrath Harbhajan Singh 
+              0               2               0               0               1               1               3               0               0               0 
+       I Sharma       IK Pathan   Iqbal Abdulla       JA Morkel        JDP Oram       JH Kallis Joginder Sharma        JR Hopes          K Goel        L Balaji 
+              3               6               0               2               0               1               1               0               0               1 
+      LPC Silva       LR Shukla        M Kartik  M Muralitharan         M Ntini        MA Khote     MF Maharoof        MM Patel   Mohammad Asif Mohammad Hafeez 
+              0               3               0               0               0               0               2               1               2               1 
+        MS Gony      P Amarnath         P Kumar    Pankaj Singh      PJ Sangwan       PP Chawla         PP Ojha        R Bhatia   R Vinay Kumar        RP Singh 
+              4               1               0               0               0               4               1               2               0               2 
+        RR Raje     S Sreesanth        S Vidyut       SB Bangar        SB Joshi       SB Styris      SC Ganguly      SD Chitnis   Shahid Afridi   Shoaib Akhtar 
+              0               3               0               1               0               0               2               0               1               0 
+   Shoaib Malik        SK Raina      SK Trivedi        SK Warne      SM Pollock   Sohail Tanvir       SR Watson   ST Jayasuriya        Umar Gul         V Kohli 
+              0               0               5               1               0               4               1               0               2               1 
+       V Sehwag       VRV Singh     VS Yeligati       VY Mahesh         WA Mota      WPUJC Vaas Y Venugopal Rao       YK Pathan    Yuvraj Singh          Z Khan 
+              2               2               0               3               0               0               0               0               1               3 
+
+#Question 4 3
+sum(subset(ipl_Data,id==335982)$total_runs)
+
+OutPut :-
+
+sum(subset(ipl_Data,id==335982)$total_runs)
+[1] 303
+
+#Question 4 4
+table(subset(ipl_Data , id == 3359820 & is_wicket==1)$bowling_team)
+
+Output :-
+
+
+  Chennai Super Kings             Deccan Chargers            Delhi Daredevils             Kings XI Punjab       Kolkata Knight Riders 
+                          0                           0                           0                           0                           0 
+             Mumbai Indians            Rajasthan Royals Royal Challengers Bangalore 
+                          0                           0                           0 
+
+=============================================================================================================================================												Div A Batch 2 Set 2 Toy Dataset
+=============================================================================================================================================
+#Question 1
+toy_data=read.csv("toy_dataset.csv",sep = "," ,header = TRUE)
+View(toy_data)
+
+#Question 2
+colnames(toy_data)<-c('Number','City','Gender','Age','Income','Illness')
+
+#Question 3 1
+toy_data$Gender <- ifelse(toy_data$Gender == 1 ,"Female","Male")
+View(toy_data)
+
+
+OutPut :-
+	
+Number  City   Gender  Age  Income Illness
+1	2	Austin	Male	44	50089	0
+2	3	Austin	Male	27	53213	0
+3	4	Austin	Female	41	27897	0
+4	5	Austin	Male	43	26997	0
+5	6	Austin	Male	46	29374	0
+6	7	Austin	Male	55	44003	0
+7	8	Austin	Male	53	58625	0
+8	9	Austin	Female	43	52935	0
+9	10	Austin	Male	46	60637	0
+10	11	Austin	Male	43	49741	0
+11	12	Austin	Female	51	31416	0
+12	13	Austin	Female	40	46882	0
+13	14	Austin	Female	34	33246	0
+14	15	Austin	Female	58	32567	0
+15	16	Austin	Male	29	49798	0
+16	17	Austin	Male	28	38119	0
+17	18	Austin	Female	30	27446	0
+18	19	Austin	Male	28	54937	0
+
+#Question 3 2
+toy_data$Illness<- ifelse(toy_data$Illness == 0 ,"No",toy_data$Illness)
+View(toy_data)  
+
+OutPut :-
+
+Number 	City  Gender Age Income Illness
+2	 Austin  Male	44	50089	No
+3	 Austin	 Male	27	53213	No
+4	 Austin	 Female	41	27897	No
+5	 Austin	 Male	43	26997	No
+6	 Austin	 Male	46	29374	No
+7	 Austin	 Male	55	44003	No
+8	 Austin	 Male	53	58625	No
+9	 Austin	 Female	43	52935	No
+10 	 Austin	 Male	46	60637	No
+11	 Austin	 Male	43	49741	No
+12	 Austin	 Female	51	31416	No
+13	 Austin	 Female	40	46882	No
+14	 Austin	 Female	34	33246	No
+15	 Austin	 Female	58	32567	No
+16	 Austin	 Male	29	49798	No
+17	 Austin	 Male	28	38119	No
+18 	Austin	 Female	30	27446	No
+19	Austin	 Male	28	54937	No
+
+
+#Question 4 1
+mean(subset(toy_data, Gender=='Male')$Age)
+mean(subset(toy_data, Gender=='Female')$Age)
+
+OutPut :--
+
+ #Question 4 1
+> mean(subset(toy_data, Gender=='Male')$Age)
+[1] 45.04756
+> mean(subset(toy_data, Gender=='Female')$Age)
+[1] 44.93909
+
+#Question 4 2
+mean(subset(toy_data ,Illness=="Yes")$Income)
+mean(subset(toy_data,Illness == "No")$Income)
+
+OutPut :-
+
+> #Question 4 2
+> mean(subset(toy_data ,Illness=="Yes")$Income)
+[1] NaN
+> mean(subset(toy_data,Illness == "No")$Income)
+[1] 45324.47
+
+#Question 4 3
+m <- c()
+counter <- 1
+for (i in (unique(toy_data$City))) {
+  m[counter] <- mean(subset(toy_data, City==i)$Income)
+  counter = counter + 1
+}
+citywise_mean <- data.frame(unique(toy_data$City), m)
+colnames(citywise_mean) <- c('City', 'Avg. Income')
+print(citywise_mean)
+
+OutPut :--
+
+    		City     Avg. Income
+1          Austin    44636.83
+2          Boston    45353.56
+3          Dallas    45064.43
+4     Los Angeles    45393.18
+5   Mountain View    45563.36
+6   New York City    45631.42
+7       San Diego    45498.58
+8 Washington D.C.    45638.05
+
+#Question 4 4
+
+illness <- c()
+health <- c()
+counter <- 1
+for (i in (unique(toy_data$City))) {
+  illness[counter] <- nrow(subset(toy_data, City==i & Illness=='Yes'))
+  health[counter] <- nrow(subset(toy_data,City==i & Illness=='No'))
+  counter = counter + 1
+}
+citywise_illness <- data.frame(unique(toy_data$City), illness, health)
+colnames(citywise_illness) <- c('City', 'IllNess', 'Healthy')
+print(citywise_illness)
+
+
+OutPut :-- 
+
+	  		 City    IllNess  Healthy
+1          Austin       0     130
+2          Boston       0    3559
+3          Dallas       0    2812
+4     Los Angeles       0    1615
+5   Mountain View       0      50
+6   New York City       0     178
+7       San Diego       0      35
+8 Washington D.C.       0    1165
